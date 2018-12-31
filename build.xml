@@ -30,7 +30,7 @@
 	
 	 <!-- Shows deploying code with no TestLevel sepcified -->
     <target name="deployCodeNoTestLevelSpecified">
-      <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="Delta/src" rollbackOnError="true" autoUpdatePackage="true" testlevel="NoTestsRun"/>
+      <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="Delta/src" rollbackOnError="true" autoUpdatePackage="true" testlevel="NoTestRun"/>
     </target>
 	
 	<!-- Shows deploying code and running tests only within the org namespace -->
