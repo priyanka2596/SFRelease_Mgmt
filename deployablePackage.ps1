@@ -158,4 +158,5 @@ param (
 				}
 			}
 		}
-	}
+    }
+Copy-New-Item "$ENV:WORKSPACE\src\package.xml" "$ENV:WORKSPACE\Delta\src\package.xml"
