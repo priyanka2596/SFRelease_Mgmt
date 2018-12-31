@@ -35,7 +35,7 @@
 	
 	<!-- Shows deploying code and running tests only within the org namespace -->
 	<target name="deployCodeParam">
-	  <sf:deploy username="${sf1.username}" password="${sf1.password}" serverurl="${sf1.serverurl}" autoUpdatePackage="true" maxPoll="${sf1.maxPoll}" deployRoot="Delta/src" rollbackOnError="true"  testlevel="${TestLevel}"/>
+	  <sf:deploy username="${sf1.username}" password="${sf1.password}" serverurl="${sf1.serverurl}" autoUpdatePackage="true" maxPoll="${sf1.maxPoll}" deployRoot="Delta/src" rollbackOnError="true"  testlevel="${sf1.testlevel}"/>
 	</target>
 
     <!-- Shows check only; never actually saves to the server -->
