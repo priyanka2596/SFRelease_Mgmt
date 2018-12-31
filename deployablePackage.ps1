@@ -88,7 +88,7 @@ param (
 			}
 			else 
 			{
-					#write-host "Files do not exist in latest build: $s1[$i2]" 
+					#write-host "Files do not exist in latest build: $s1[$i2]" delta
 					#write-host "No meta file found for : " $s1[$i2]"
 			}
 		}
