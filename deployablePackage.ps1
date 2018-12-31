@@ -1,12 +1,11 @@
-$last2Commits = git log -2 --pretty=tformat:%h%n
-write-host "Last 2 commits are : $last2Commits"
+param ( 
+[string] $ENV:StartCommitId ,
+[string] $ENV:EndCommitId 
+ )
 
-if($last2Commits)
-{
-	$gitLatestCommit = $last2Commits.split("")[0]
-	write-host "actual Latest commit id : $gitLatestCommit"
-	$prevCommit = $last2Commits.split("")[2]
-	write-host "actual previous commit id : $prevCommit"
+	$gitLatestCommit = $ENV:EndCommitId  
+	write-host "actual Latest commit id : $ENV:StartCommitId"
+	write-host "actual previous commit id : $gitLatestCommit"
 	$myMergeCommitInfo = git show $gitLatestCommit
 	
 	if(($myMergeCommitInfo) -and $myMergeCommitInfo[1].split("")[0] -contains "Merge:")
@@ -19,12 +18,12 @@ if($last2Commits)
 		$newMergeprevCommit = $myMergeCommitInfo[1].split(" ")[1]
 		write-host "New Merge previous commit id : $newMergeprevCommit"
 		
-		git diff --name-only $newMergeprevCommit $newMergeLatestCommit --relative > lastcommitchanges.txt
+		git diff -m --name-only --diff-filter=ACMRTU $newMergeprevCommit $newMergeLatestCommit --relative > lastcommitchanges.txt
 	}
 	else
 	{
 		write-host "Latest commit is not a merge commit"
-		git diff --name-only $prevCommit $gitLatestCommit --relative > lastcommitchanges.txt
+		git diff -m --name-only --diff-filter=ACMRTU $ENV:StartCommitId $gitLatestCommit --relative > lastcommitchanges.txt
 	}
 	
 	#old code to generate Delta
@@ -160,5 +159,3 @@ if($last2Commits)
 			}
 		}
 	}
-}
-Copy-New-Item "$ENV:WORKSPACE\src\package.xml" "$ENV:WORKSPACE\Delta\src\package.xml"
