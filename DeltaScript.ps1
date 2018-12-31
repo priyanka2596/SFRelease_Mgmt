@@ -157,5 +157,3 @@ if($last2Commits)
 				}
 			}
 		}
-	}
-}
